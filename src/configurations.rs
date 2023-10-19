@@ -30,6 +30,7 @@ pub fn get_configurations<'a, T: Deserialize<'a>>() -> Result<T, config::ConfigE
 pub enum Environment {
     Development,
     Production,
+    CI,
 }
 
 impl Display for Environment {
@@ -37,6 +38,7 @@ impl Display for Environment {
         match self {
             Self::Development => write!(f, "development"),
             Self::Production => write!(f, "production"),
+            Self::CI => write!(f, "ci"),
         }
     }
 }
@@ -48,6 +50,7 @@ impl TryFrom<String> for Environment {
         match value.to_lowercase().as_str() {
             "development" => Ok(Environment::Development),
             "production" => Ok(Environment::Production),
+            "ci" => Ok(Environment::CI),
             other => Err(anyhow::anyhow!(
                 "{} is not a supported environment. Use either `development` or `production`.",
                 other
