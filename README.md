@@ -13,5 +13,5 @@ The following functionalities are handled by the crate:
 
 ```toml
 [dependencies]
-chatterverse_utils = {git = "https://github.com/chatterverse-ai/utils.git}
+chatterverse_utils = {git = "https://github.com/LogicBloom/utils.git}
 ```
